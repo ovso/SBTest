@@ -1,3 +1,4 @@
 <resources>
   <string name="app_name">SBTest</string>
+  <string name="error_server">서버접속이 원활하지 않습니다. 잠시후 시도해 주세요.</string>
 </resources>
