@@ -14,6 +14,10 @@ public interface MainPresenter {
 
   void onCurrencyClick();
 
+  void onSendTextChanged(String sendMoneyStr, boolean focused);
+
+  void onRecipientTextChanged(String recipientMoneyStr, boolean focused);
+
   interface View {
     void setListener();
 
@@ -25,5 +29,8 @@ public interface MainPresenter {
     void showCurrency(String name);
 
     void showCountry(String country);
+
+    void showRecipientMoney(long recipient);
+    void showSendMoney(long send);
   }
 }

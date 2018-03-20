@@ -4,10 +4,13 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.StringRes;
 import android.support.v7.app.AlertDialog;
+import android.text.Editable;
 import android.widget.EditText;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.OnClick;
+import butterknife.OnTextChanged;
+import hugo.weaving.DebugLog;
 import io.github.ovso.sbtest.R;
 import io.github.ovso.sbtest.framework.customview.BaseActivity;
 import javax.inject.Inject;
@@ -67,11 +70,31 @@ public class MainActivity extends BaseActivity implements MainPresenter.View {
     countryTextView.setText(country);
   }
 
+  @Override public void showRecipientMoney(long recipient) {
+    recipientEditText.setText(String.valueOf(recipient));
+  }
+
+  @Override public void showSendMoney(long send) {
+    sendEditText.setText(String.valueOf(send));
+  }
+
   @OnClick(R.id.country_textview) void onCountryClick() {
     presenter.onCountryClick();
   }
 
   @OnClick(R.id.currency_textview) void onCurrencyClick() {
     presenter.onCurrencyClick();
+  }
+
+  @DebugLog
+  @OnTextChanged(value = R.id.send_amount_edittext, callback = OnTextChanged.Callback.TEXT_CHANGED)
+  void onSendTextChanged(Editable editable) {
+    presenter.onSendTextChanged(editable.toString(), sendEditText.isFocused());
+  }
+
+  @DebugLog
+  @OnTextChanged(value = R.id.recipient_amount_edittext, callback = OnTextChanged.Callback.TEXT_CHANGED)
+  void onRecipientTextChanged(Editable editable) {
+    presenter.onRecipientTextChanged(editable.toString(), recipientEditText.isFocused());
   }
 }

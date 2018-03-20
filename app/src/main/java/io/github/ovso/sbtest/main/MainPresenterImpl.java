@@ -1,5 +1,7 @@
 package io.github.ovso.sbtest.main;
 
+import android.text.TextUtils;
+import hugo.weaving.DebugLog;
 import io.github.ovso.sbtest.R;
 import io.github.ovso.sbtest.main.model.Languages;
 import io.github.ovso.sbtest.network.NetworkHelper;
@@ -47,5 +49,32 @@ public class MainPresenterImpl implements MainPresenter {
       view.showCurrency(currencys[which]);
       view.showCountry(countries[which]);
     });
+  }
+
+  // 베트남 : 1 VND : 0.047 KRW
+  // 인도네시아 : 1 IDR : 0.078 KRW
+  @DebugLog @Override public void onSendTextChanged(String sendMoneyStr, boolean focused) {
+    if (focused) {
+      long sendMoney = getInputMoney(sendMoneyStr);
+      long money = Math.round(sendMoney * 0.047);
+      view.showRecipientMoney(money);
+    }
+  }
+
+  @DebugLog @Override
+  public void onRecipientTextChanged(String recipientMoneyStr, boolean focused) {
+    if (focused) {
+      long recipientMoney = getInputMoney(recipientMoneyStr);
+      long money = Math.round(recipientMoney * 21.2765957);
+      view.showSendMoney(money);
+    }
+  }
+
+  private long getInputMoney(String inputMoney) {
+    if (TextUtils.isEmpty(inputMoney)) {
+      return 0;
+    } else {
+      return Long.valueOf(inputMoney);
+    }
   }
 }
