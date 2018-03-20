@@ -32,5 +32,7 @@ public interface MainPresenter {
 
     void showRecipientMoney(long recipient);
     void showSendMoney(long send);
+
+    void requestRecipientFocus();
   }
 }

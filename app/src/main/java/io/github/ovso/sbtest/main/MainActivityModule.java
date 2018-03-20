@@ -10,11 +10,17 @@ import io.github.ovso.sbtest.network.NetworkHelper;
  */
 
 @Module public abstract class MainActivityModule {
-  @Provides public static MainPresenter provideMainPresenter(MainActivity activity, NetworkHelper network) {
-    return new MainPresenterImpl(activity, network);
+  @Provides
+  public static MainPresenter provideMainPresenter(MainActivity activity, NetworkHelper network,
+      Country[] countries) {
+    return new MainPresenterImpl(activity, network, countries);
   }
 
   @Provides public static NetworkHelper provideNetworkHelper() {
     return new NetworkHelper(NetworkApi.BASE_URL);
+  }
+
+  @Provides public static Country[] provideCountries() {
+    return new Country[] { Country.VI, Country.ID };
   }
 }

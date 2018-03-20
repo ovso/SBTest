@@ -14,6 +14,7 @@ import hugo.weaving.DebugLog;
 import io.github.ovso.sbtest.R;
 import io.github.ovso.sbtest.framework.customview.BaseActivity;
 import javax.inject.Inject;
+import timber.log.Timber;
 
 public class MainActivity extends BaseActivity implements MainPresenter.View {
   @Inject MainPresenter presenter;
@@ -47,7 +48,7 @@ public class MainActivity extends BaseActivity implements MainPresenter.View {
         .setMessage(msg)
         .setPositiveButton(android.R.string.ok, (dialogInterface, i) -> {
           dialogInterface.dismiss();
-          fileList();
+          finish();
         })
         .show();
   }
@@ -57,7 +58,7 @@ public class MainActivity extends BaseActivity implements MainPresenter.View {
         .setMessage(resId)
         .setPositiveButton(android.R.string.ok, (dialogInterface, i) -> {
           dialogInterface.dismiss();
-          fileList();
+          finish();
         })
         .show();
   }
@@ -76,6 +77,13 @@ public class MainActivity extends BaseActivity implements MainPresenter.View {
 
   @Override public void showSendMoney(long send) {
     sendEditText.setText(String.valueOf(send));
+  }
+
+  @Override public void requestRecipientFocus() {
+    recipientEditText.requestFocus();
+    Timber.d("recipientFocus = " + recipientEditText.isFocused());
+    presenter.onRecipientTextChanged(recipientEditText.getText().toString(),
+        recipientEditText.isFocused());
   }
 
   @OnClick(R.id.country_textview) void onCountryClick() {

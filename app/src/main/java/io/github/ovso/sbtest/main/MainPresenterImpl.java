@@ -18,10 +18,13 @@ public class MainPresenterImpl implements MainPresenter {
   private MainPresenter.View view;
   private NetworkHelper network;
   private Languages languages;
+  private Country[] countries;
+  private Country currentCountry;
 
-  public MainPresenterImpl(MainPresenter.View view, NetworkHelper network) {
+  public MainPresenterImpl(MainPresenter.View view, NetworkHelper network, Country[] countries) {
     this.view = view;
     this.network = network;
+    this.countries = countries;
   }
 
   @Override public void onCreate() {
@@ -31,6 +34,7 @@ public class MainPresenterImpl implements MainPresenter {
         .observeOn(AndroidSchedulers.mainThread())
         .subscribe(languages -> {
           this.languages = languages;
+          currentCountry = countries[0];
           view.setListener();
         }, throwable -> {
           Timber.d(throwable);
@@ -42,21 +46,22 @@ public class MainPresenterImpl implements MainPresenter {
   }
 
   @Override public void onCurrencyClick() {
-    final String[] currencys = new String[] { "VND", "IDR" };
-    final String[] countries = new String[] { "베트남", "인도네시아" };
-    view.showCurrencyDialog(currencys, (dialogInterface, which) -> {
+    final String[] currencies =
+        new String[] { countries[0].getCurrency(), countries[1].getCurrency() };
+
+    view.showCurrencyDialog(currencies, (dialogInterface, which) -> {
+      currentCountry = countries[which];
+      view.showCountry(currentCountry.getCountry());
+      view.showCurrency(currentCountry.getCurrency());
+      view.requestRecipientFocus();
       dialogInterface.dismiss();
-      view.showCurrency(currencys[which]);
-      view.showCountry(countries[which]);
     });
   }
 
-  // 베트남 : 1 VND : 0.047 KRW
-  // 인도네시아 : 1 IDR : 0.078 KRW
   @DebugLog @Override public void onSendTextChanged(String sendMoneyStr, boolean focused) {
     if (focused) {
       long sendMoney = getInputMoney(sendMoneyStr);
-      long money = Math.round(sendMoney * 0.047);
+      long money = Math.round(sendMoney * currentCountry.getExchangeRate());
       view.showRecipientMoney(money);
     }
   }
@@ -65,7 +70,7 @@ public class MainPresenterImpl implements MainPresenter {
   public void onRecipientTextChanged(String recipientMoneyStr, boolean focused) {
     if (focused) {
       long recipientMoney = getInputMoney(recipientMoneyStr);
-      long money = Math.round(recipientMoney * 21.2765957);
+      long money = Math.round(recipientMoney / currentCountry.getExchangeRate());
       view.showSendMoney(money);
     }
   }
