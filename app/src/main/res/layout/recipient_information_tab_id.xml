@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:id="@+id/id_confirm_container"
     android:visibility="gone"
@@ -13,9 +14,10 @@
       android:orientation="horizontal"
       >
     <TextView
+        android:id="@+id/id_confirm_send_amount_lable_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="보내는 금액"
+        tools:text="보내는 금액"
         />
     <TextView
         android:id="@+id/id_confirm_send_amount_textview"
@@ -34,9 +36,10 @@
       android:orientation="horizontal"
       >
     <TextView
+        android:id="@+id/id_confirm_recipient_amount_lable_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="받는 금액"
+        tools:text="받는 금액"
         />
     <TextView
         android:id="@+id/id_confirm_recipient_amount_textview"
@@ -55,9 +58,10 @@
       android:orientation="horizontal"
       >
     <TextView
+        android:id="@+id/id_confirm_bank_name_lable_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="은행 이름"
+        tools:text="은행 이름"
         />
     <TextView
         android:id="@+id/id_confirm_bank_name_textview"
@@ -71,12 +75,13 @@
       android:orientation="horizontal"
       >
     <TextView
+        android:id="@+id/id_confirm_payee_firstname_lable_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="수취인 성명"
+        tools:text="first name"
         />
     <EditText
-        android:id="@+id/id_confirm_payee_name_edittext"
+        android:id="@+id/id_confirm_payee_firstname_edittext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />
@@ -87,9 +92,27 @@
       android:orientation="horizontal"
       >
     <TextView
+        android:id="@+id/id_confirm_payee_lastname_lable_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="수취인 계좌번호"
+        tools:text="last name"
+        />
+    <EditText
+        android:id="@+id/id_confirm_payee_lasttname_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+  </LinearLayout>
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      >
+    <TextView
+        android:id="@+id/id_confirm_payee_account_number_lable_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="수취인 계좌번호"
         />
     <EditText
         android:id="@+id/id_confirm_payee_account_number_edittext"
@@ -103,9 +126,10 @@
       android:orientation="horizontal"
       >
     <TextView
+        android:id="@+id/id_confirm_payee_phone_lable_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="수취인 휴대폰"
+        tools:text="수취인 휴대폰"
         />
     <EditText
         android:id="@+id/id_confirm_payee_phone_edittext"
@@ -119,9 +143,10 @@
       android:orientation="horizontal"
       >
     <TextView
+        android:id="@+id/id_confirm_payee_address_label_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="수취인 주소"
+        tools:text="수취인 주소"
         />
     <EditText
         android:id="@+id/id_confirm_payee_address_edittext"

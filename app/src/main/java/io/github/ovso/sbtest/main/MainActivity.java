@@ -29,20 +29,27 @@ public class MainActivity extends BaseActivity implements MainPresenter.View {
   //vi layout
   @BindView(R.id.vi_confirm_container) ViewGroup viConfirmContainer;
   @BindView(R.id.vi_confirm_send_amount_textview) TextView viConfirmSendAmountTextView;
+  @BindView(R.id.vi_confirm_send_amount_lable_textview) TextView viConfirmSendAmountLabelTextView;
   @BindView(R.id.vi_confirm_recipient_amount_textview) TextView viConfirmRecipientAmountTextView;
-  @BindView(R.id.vi_confirm_pickup_bank_name_textview) TextView viConfirmPickupBankNameTextView;
-  @BindView(R.id.vi_confirm_payee_name_edittext) TextView viConfirmPayeeNameEditText;
-  @BindView(R.id.vi_confirm_payee_phone_edittext) TextView viConfirmPayeePhoneEditText;
+  @BindView(R.id.vi_confirm_recipient_amount_lable_textview) TextView viConfirmRecipientAmountLabelTextView;
+  @BindView(R.id.vi_confirm_pickup_bank_name_edittext) TextView viConfirmPickupBankNameTextView;
+  @BindView(R.id.vi_confirm_pickup_bank_name_lable_textview) TextView viConfirmPickupBankNameLableTextView;
+  @BindView(R.id.vi_confirm_payee_firstname_lable_textview) TextView viConfirmPayeeFirstNameLabelTextView;
+  @BindView(R.id.vi_confirm_payee_lastname_lable_textview) TextView viConfirmPayeeLastNameLableTextView;
+  @BindView(R.id.vi_confirm_payee_phone_lable_textview) TextView viConfirmPayeePhoneLabelTextView;
 
   //id layout
   @BindView(R.id.id_confirm_container) ViewGroup idConfirmContainer;
   @BindView(R.id.id_confirm_send_amount_textview) TextView idConfirmSendAmountTextView;
+  @BindView(R.id.id_confirm_send_amount_lable_textview) TextView idConfirmSendAmountLabelTextView;
   @BindView(R.id.id_confirm_recipient_amount_textview) TextView idConfirmRecipientAmountTextView;
-  @BindView(R.id.id_confirm_bank_name_textview) TextView idConfirmBankNameTextView;
-  @BindView(R.id.id_confirm_payee_name_edittext) TextView idConfirmPayeeNameEditText;
-  @BindView(R.id.id_confirm_payee_account_number_edittext) EditText idConfirmPayeeAccountEditText;
-  @BindView(R.id.id_confirm_payee_phone_edittext) TextView idConfirmPayeePhoneEditText;
-  @BindView(R.id.id_confirm_payee_address_edittext) TextView idConfirmPayeeAddressEditText;
+  @BindView(R.id.id_confirm_recipient_amount_lable_textview) TextView idConfirmRecipientAmountLabelTextView;
+  @BindView(R.id.id_confirm_bank_name_lable_textview) TextView idConfirmBankNameLabelTextView;
+  @BindView(R.id.id_confirm_payee_firstname_lable_textview) TextView idConfirmPayeeFirstNameLabelTextView;
+  @BindView(R.id.id_confirm_payee_lastname_lable_textview) TextView idConfirmPayeeLastNameLabelTextView;
+  @BindView(R.id.id_confirm_payee_account_number_lable_textview) TextView idConfirmPayeeAccountNumberLabelTextView;
+  @BindView(R.id.id_confirm_payee_phone_lable_textview) TextView idConfirmPayeePhoneLabelTextView;
+  @BindView(R.id.id_confirm_payee_address_label_textview) TextView idConfirmPayeeAddressLabelTextView;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -133,28 +140,59 @@ public class MainActivity extends BaseActivity implements MainPresenter.View {
     idConfirmRecipientAmountTextView.setText(s);
   }
 
-  @Override public void showViPickupBankNameLable(String pickupBank) {
-    viConfirmPickupBankNameTextView.setText(pickupBank);
+  @Override public void showViConfirmPickupBankNameLable(String pickupBank) {
+    viConfirmPickupBankNameLableTextView.setText(pickupBank);
   }
 
-  @Override public void showIdBankNameLable(String bank) {
-    idConfirmBankNameTextView.setText(bank);
+  @Override public void showIdConfirmBankNameLable(String label) {
+    idConfirmBankNameLabelTextView.setText(label);
   }
 
-  @Override public void showViConfirmAccountNumberLable(String acctNo) {
-
+  @Override public void showIdConfirmAccountNumberLable(String label) {
+    idConfirmPayeeAccountNumberLabelTextView.setText(label);
   }
 
-  @Override public void showIdConfirmAccountNumberLable(String acctNo) {
-    idConfirmPayeeAccountEditText.setText(acctNo);
+  @Override public void showViConfirmPayeeFirstNameLable(String label) {
   }
 
-  @Override public void showViPayeeFirstNameLable(String s) {
-    viConfirmPayeeNameEditText.setText(s);
+  @Override public void showIdConfirmPayeeFirstNameLable(String label) {
+    idConfirmPayeeFirstNameLabelTextView.setText(label);
   }
 
-  @Override public void showIdPayeeFirstNameLable(String s) {
-    idConfirmPayeeNameEditText.setText(s);
+  @Override public void showViConfirmPayeeLastNameLable(String label) {
+    viConfirmPayeeLastNameLableTextView.setText(label);
+  }
+
+  @Override public void showIdConfirmPayeeLastnameLable(String label) {
+    idConfirmPayeeLastNameLabelTextView.setText(label);
+  }
+
+  @Override public void showViConfirmPayeePhoneLable(String label) {
+    viConfirmPayeePhoneLabelTextView.setText(label);
+  }
+
+  @Override public void showIdConfirmPayeePhoneLable(String label) {
+    idConfirmPayeePhoneLabelTextView.setText(label);
+  }
+
+  @Override public void showViConfirmSendAmountLable(String label) {
+    viConfirmSendAmountLabelTextView.setText(label);
+  }
+
+  @Override public void showViConfirmRecipientAmountLable(String label) {
+    viConfirmRecipientAmountLabelTextView.setText(label);
+  }
+
+  @Override public void showIdConfirmSendAmountLable(String label) {
+    idConfirmSendAmountLabelTextView.setText(label);
+  }
+
+  @Override public void showIdConfirmRecipientAmountLable(String label) {
+    idConfirmRecipientAmountLabelTextView.setText(label);
+  }
+
+  @Override public void showIdConfirmPayeeAddressLabel(String address) {
+    idConfirmPayeeAddressLabelTextView.setText(address);
   }
 
   @OnClick(R.id.country_textview) void onCountryClick() {

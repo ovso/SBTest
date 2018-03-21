@@ -46,16 +46,32 @@ public interface MainPresenter {
 
     void showIdConfirmRecipientAmount(String s);
 
-    void showViPickupBankNameLable(String pickupBank);
+    void showViConfirmPickupBankNameLable(String pickupBank);
 
-    void showIdBankNameLable(String bank);
-
-    void showViConfirmAccountNumberLable(String acctNo);
+    void showIdConfirmBankNameLable(String bank);
 
     void showIdConfirmAccountNumberLable(String acctNo);
 
-    void showViPayeeFirstNameLable(String s);
+    void showViConfirmPayeeFirstNameLable(String s);
 
-    void showIdPayeeFirstNameLable(String s);
+    void showIdConfirmPayeeFirstNameLable(String s);
+
+    void showViConfirmPayeeLastNameLable(String lastName);
+
+    void showIdConfirmPayeeLastnameLable(String lastName);
+
+    void showViConfirmPayeePhoneLable(String mobile);
+
+    void showIdConfirmPayeePhoneLable(String mobile);
+
+    void showViConfirmSendAmountLable(String sendAmount);
+
+    void showViConfirmRecipientAmountLable(String receiveAmount);
+
+    void showIdConfirmSendAmountLable(String sendAmount);
+
+    void showIdConfirmRecipientAmountLable(String receiveAmount);
+
+    void showIdConfirmPayeeAddressLabel(String address);
   }
 }

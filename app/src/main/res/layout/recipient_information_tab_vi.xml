@@ -64,8 +64,8 @@
         android:layout_height="wrap_content"
         tools:text = "픽업 은행 이름"
         />
-    <TextView
-        android:id="@+id/vi_confirm_pickup_bank_name_textview"
+    <EditText
+        android:id="@+id/vi_confirm_pickup_bank_name_edittext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />
@@ -76,13 +76,13 @@
       android:orientation="horizontal"
       >
     <TextView
-        android:id="@+id/vi_confirm_payee_name_lable_textview"
+        android:id="@+id/vi_confirm_payee_firstname_lable_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="first name"
         />
     <EditText
-        android:id="@+id/vi_confirm_payee_name_edittext"
+        android:id="@+id/vi_confirm_payee_firstname_edittext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />
@@ -93,9 +93,27 @@
       android:orientation="horizontal"
       >
     <TextView
+        android:id="@+id/vi_confirm_payee_lastname_lable_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="수취인 휴대폰"
+        tools:text="last name"
+        />
+    <EditText
+        android:id="@+id/vi_confirm_payee_lastname_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+  </LinearLayout>
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      >
+    <TextView
+        android:id="@+id/vi_confirm_payee_phone_lable_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="수취인 휴대폰"
         />
     <EditText
         android:id="@+id/vi_confirm_payee_phone_edittext"

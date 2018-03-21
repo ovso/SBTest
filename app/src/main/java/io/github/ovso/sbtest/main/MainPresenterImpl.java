@@ -50,15 +50,23 @@ public class MainPresenterImpl implements MainPresenter {
   }
 
   private void showViLable(Country vi) {
-    view.showViPickupBankNameLable(vi.getPickupBank());
-    view.showViConfirmAccountNumberLable(vi.getAcctNo());
-    view.showViPayeeFirstNameLable(vi.getFirstName());
+    view.showViConfirmSendAmountLable(vi.getSendAmount());
+    view.showViConfirmRecipientAmountLable(vi.getReceiveAmount());
+    view.showViConfirmPickupBankNameLable(vi.getPickupBank());
+    view.showViConfirmPayeeFirstNameLable(vi.getFirstName());
+    view.showViConfirmPayeeLastNameLable(vi.getLastName());
+    view.showViConfirmPayeePhoneLable(vi.getMobile());
   }
 
   private void showIdLable(Country id) {
-    view.showIdBankNameLable(id.getBank());
+    view.showIdConfirmSendAmountLable(id.getSendAmount());
+    view.showIdConfirmRecipientAmountLable(id.getReceiveAmount());
+    view.showIdConfirmBankNameLable(id.getBank());
+    view.showIdConfirmPayeeFirstNameLable(id.getFirstName());
+    view.showIdConfirmPayeeLastnameLable(id.getLastName());
     view.showIdConfirmAccountNumberLable(id.getAcctNo());
-    view.showIdPayeeFirstNameLable(id.getFirstName());
+    view.showIdConfirmPayeePhoneLable(id.getMobile());
+    view.showIdConfirmPayeeAddressLabel(id.getAddress());
   }
 
   @Override public void onCountryClick() {
