@@ -15,6 +15,8 @@ import butterknife.OnTextChanged;
 import hugo.weaving.DebugLog;
 import io.github.ovso.sbtest.R;
 import io.github.ovso.sbtest.framework.customview.BaseActivity;
+import io.github.ovso.sbtest.main.model.IdConfirm;
+import io.github.ovso.sbtest.main.model.ViConfirm;
 import javax.inject.Inject;
 import timber.log.Timber;
 
@@ -22,7 +24,7 @@ public class MainActivity extends BaseActivity implements MainPresenter.View {
   //공통
   @Inject MainPresenter presenter;
   @BindView(R.id.country_textview) TextView countryTextView;
-  @BindView(R.id.currency_textview) TextView currencyTextView;
+  @BindView(R.id.currency_button) TextView currencyButton;
   @BindView(R.id.send_amount_edittext) EditText sendEditText;
   @BindView(R.id.recipient_amount_edittext) EditText recipientEditText;
 
@@ -31,23 +33,36 @@ public class MainActivity extends BaseActivity implements MainPresenter.View {
   @BindView(R.id.vi_confirm_send_amount_textview) TextView viConfirmSendAmountTextView;
   @BindView(R.id.vi_confirm_send_amount_label_textview) TextView viConfirmSendAmountLabelTextView;
   @BindView(R.id.vi_confirm_recipient_amount_textview) TextView viConfirmRecipientAmountTextView;
-  @BindView(R.id.vi_confirm_recipient_amount_label_textview) TextView viConfirmRecipientAmountLabelTextView;
-  @BindView(R.id.vi_confirm_pickup_bank_name_edittext) TextView viConfirmPickupBankNameTextView;
-  @BindView(R.id.vi_confirm_pickup_bank_name_label_textview) TextView viConfirmPickupBankNameLableTextView;
+  @BindView(R.id.vi_confirm_recipient_amount_label_textview) TextView
+      viConfirmRecipientAmountLabelTextView;
+  @BindView(R.id.vi_confirm_pickup_bank_name_edittext) EditText viConfirmPickupBankNameEditText;
+  @BindView(R.id.vi_confirm_pickup_bank_name_label_textview) TextView
+      viConfirmPickupBankNameLableTextView;
   @BindView(R.id.vi_confirm_payee_name_label_textview) TextView viConfirmPayeeNameLabelTextView;
+  @BindView(R.id.vi_confirm_payee_name_edittext) TextView viConfirmPayeeNameEditText;
   @BindView(R.id.vi_confirm_payee_phone_label_textview) TextView viConfirmPayeePhoneLabelTextView;
+  @BindView(R.id.vi_confirm_payee_phone_edittext) EditText viConfirmPayeePhoneEditText;
 
   //id layout
   @BindView(R.id.id_confirm_container) ViewGroup idConfirmContainer;
   @BindView(R.id.id_confirm_send_amount_textview) TextView idConfirmSendAmountTextView;
   @BindView(R.id.id_confirm_send_amount_label_textview) TextView idConfirmSendAmountLabelTextView;
   @BindView(R.id.id_confirm_recipient_amount_textview) TextView idConfirmRecipientAmountTextView;
-  @BindView(R.id.id_confirm_recipient_amount_lable_textview) TextView idConfirmRecipientAmountLabelTextView;
+  @BindView(R.id.id_confirm_recipient_amount_lable_textview) TextView
+      idConfirmRecipientAmountLabelTextView;
+  @BindView(R.id.id_confirm_bank_name_edittext) TextView idConfirmBankNameEditText;
   @BindView(R.id.id_confirm_bank_name_label_textview) TextView idConfirmBankNameLabelTextView;
   @BindView(R.id.id_confirm_payee_name_label_textview) TextView idConfirmPayeeNameLabelTextView;
-  @BindView(R.id.id_confirm_payee_account_number_label_textview) TextView idConfirmPayeeAccountNumberLabelTextView;
+  @BindView(R.id.id_confirm_payee_name_edittext) EditText idConfirmPayeeNameEditText;
+  @BindView(R.id.id_confirm_payee_account_number_label_textview) TextView
+      idConfirmPayeeAccountNumberLabelTextView;
+  @BindView(R.id.id_confirm_payee_account_number_edittext) EditText
+      idConfirmPayeeAccountNumberEditText;
   @BindView(R.id.id_confirm_payee_phone_label_textview) TextView idConfirmPayeePhoneLabelTextView;
-  @BindView(R.id.id_confirm_payee_address_label_textview) TextView idConfirmPayeeAddressLabelTextView;
+  @BindView(R.id.id_confirm_payee_phone_edittext) EditText idConfirmPayeePhoneEditText;
+  @BindView(R.id.id_confirm_payee_address_label_textview) TextView
+      idConfirmPayeeAddressLabelTextView;
+  @BindView(R.id.id_confirm_payee_address_edittext) EditText idConfirmPayeeAddressEditText;
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -63,9 +78,9 @@ public class MainActivity extends BaseActivity implements MainPresenter.View {
   }
 
   @Override
-  public void showCurrencyDialog(String[] names, DialogInterface.OnClickListener onClickListener) {
+  public void showCurrencyDialog(String[] names, int checkedItem, DialogInterface.OnClickListener onClickListener) {
     new AlertDialog.Builder(this).setTitle("국가 설정")
-        .setSingleChoiceItems(names, 0, onClickListener)
+        .setSingleChoiceItems(names, checkedItem, onClickListener)
         .show();
   }
 
@@ -90,7 +105,7 @@ public class MainActivity extends BaseActivity implements MainPresenter.View {
   }
 
   @Override public void showCurrency(String currency) {
-    currencyTextView.setText(currency);
+    currencyButton.setText(currency);
   }
 
   @Override public void showCountry(String country) {
@@ -108,11 +123,10 @@ public class MainActivity extends BaseActivity implements MainPresenter.View {
   @Override public void requestRecipientFocus() {
     //recipientEditText.requestFocus();
     Timber.d("recipientFocus = " + recipientEditText.isFocused());
-    if(recipientEditText.isFocused()) {
+    if (recipientEditText.isFocused()) {
       presenter.onRecipientTextChanged(recipientEditText.getText().toString(),
           recipientEditText.isFocused());
-
-    } else if(sendEditText.isFocused()) {
+    } else if (sendEditText.isFocused()) {
       presenter.onSendTextChanged(sendEditText.getText().toString(), sendEditText.isFocused());
     }
   }
@@ -195,7 +209,7 @@ public class MainActivity extends BaseActivity implements MainPresenter.View {
     presenter.onCountryClick();
   }
 
-  @OnClick(R.id.currency_textview) void onCurrencyClick() {
+  @OnClick(R.id.currency_button) void onCurrencyClick() {
     presenter.onCurrencyClick();
   }
 
@@ -209,5 +223,43 @@ public class MainActivity extends BaseActivity implements MainPresenter.View {
   @OnTextChanged(value = R.id.recipient_amount_edittext, callback = OnTextChanged.Callback.TEXT_CHANGED)
   void onRecipientTextChanged(Editable editable) {
     presenter.onRecipientTextChanged(editable.toString(), recipientEditText.isFocused());
+  }
+
+  @OnClick(R.id.confirm_button) void onConfirmClick() {
+    //presenter.onConfirmClick();
+    if (currencyButton.getText().equals(CountryEnum.VI.getCurrency())) {
+      ViConfirm viConfirm = new ViConfirm();
+      viConfirm.setSendAmount(viConfirmSendAmountTextView.getText().toString());
+      viConfirm.setRecipientAmount(viConfirmRecipientAmountTextView.getText().toString());
+      viConfirm.setPickupBankName(viConfirmPickupBankNameEditText.getText().toString());
+      viConfirm.setPayeeName(viConfirmPayeeNameEditText.getText().toString());
+      viConfirm.setPayeePhone(viConfirmPayeePhoneEditText.getText().toString());
+      presenter.onViConfirmClick(viConfirm);
+    } else if (currencyButton.getText().equals(CountryEnum.ID.getCurrency())) {
+      IdConfirm idConfirm = new IdConfirm();
+      idConfirm.setSendAmount(idConfirmSendAmountTextView.getText().toString());
+      idConfirm.setRecipientAmount(idConfirmRecipientAmountTextView.getText().toString());
+      idConfirm.setBankName(idConfirmBankNameEditText.getText().toString());
+      idConfirm.setPayeeName(idConfirmPayeeNameEditText.getText().toString());
+      idConfirm.setPayeeAccountNumber(idConfirmPayeeAccountNumberEditText.getText().toString());
+      idConfirm.setPayeePhone(idConfirmPayeePhoneEditText.getText().toString());
+      idConfirm.setPayeeAddress(idConfirmPayeeAddressEditText.getText().toString());
+      presenter.onIdConfirmClick(idConfirm);
+    }
+  }
+
+  @Override public void showEmptyMessage() {
+    new AlertDialog.Builder(this).setTitle("!")
+        .setMessage("모두 입력하셔야 합니다.")
+        .setPositiveButton(android.R.string.ok,
+            (dialogInterface, which) -> dialogInterface.dismiss())
+        .show();
+  }
+
+  @Override public void showConfirmDialog(String text) {
+    new AlertDialog.Builder(this).setTitle("송금정보")
+        .setMessage(text)
+        .setPositiveButton(android.R.string.ok,
+            (dialogInterface, which) -> dialogInterface.dismiss());
   }
 }

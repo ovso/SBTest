@@ -65,8 +65,8 @@
         android:layout_height="wrap_content"
         tools:text="은행 이름"
         />
-    <TextView
-        android:id="@+id/id_confirm_bank_name_textview"
+    <EditText
+        android:id="@+id/id_confirm_bank_name_edittext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />
@@ -80,7 +80,7 @@
         android:id="@+id/id_confirm_payee_name_label_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="first name"
+        tools:text="name"
         />
     <EditText
         android:id="@+id/id_confirm_payee_name_edittext"

@@ -2,6 +2,8 @@ package io.github.ovso.sbtest.main;
 
 import android.content.DialogInterface;
 import android.support.annotation.StringRes;
+import io.github.ovso.sbtest.main.model.IdConfirm;
+import io.github.ovso.sbtest.main.model.ViConfirm;
 
 /**
  * Created by jaeho on 2018. 3. 20
@@ -18,10 +20,14 @@ public interface MainPresenter {
 
   void onRecipientTextChanged(String recipientMoneyStr, boolean focused);
 
+  void onViConfirmClick(ViConfirm viConfirm);
+
+  void onIdConfirmClick(IdConfirm idConfirm);
+
   interface View {
     void setListener();
 
-    void showCurrencyDialog(String[] countries, DialogInterface.OnClickListener onClickListener);
+    void showCurrencyDialog(String[] countries, int checked, DialogInterface.OnClickListener onClickListener);
 
     void showMessage(String msg);
     void showMessage(@StringRes int resId);
@@ -69,5 +75,9 @@ public interface MainPresenter {
     void showIdConfirmRecipientAmountLable(String label);
 
     void showIdConfirmPayeeAddressLabel(String label);
+
+    void showEmptyMessage();
+
+    void showConfirmDialog(String text);
   }
 }

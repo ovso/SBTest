@@ -5,7 +5,9 @@ import android.text.TextUtils;
 import hugo.weaving.DebugLog;
 import io.github.ovso.sbtest.R;
 import io.github.ovso.sbtest.main.model.Country;
+import io.github.ovso.sbtest.main.model.IdConfirm;
 import io.github.ovso.sbtest.main.model.Languages;
+import io.github.ovso.sbtest.main.model.ViConfirm;
 import io.github.ovso.sbtest.network.NetworkHelper;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -73,8 +75,8 @@ public class MainPresenterImpl implements MainPresenter {
   @Override public void onCurrencyClick() {
     final String[] currencies =
         new String[] { countries[0].getCurrency(), countries[1].getCurrency() };
-
-    view.showCurrencyDialog(currencies, (DialogInterface dialogInterface, int which) -> {
+    int checkedItem = currentCountry.getType();
+    view.showCurrencyDialog(currencies, checkedItem, (DialogInterface dialogInterface, int which) -> {
       currentCountry = countries[which];
       view.showCountry(currentCountry.getCountry());
       view.showCurrency(currentCountry.getCurrency());
@@ -129,6 +131,60 @@ public class MainPresenterImpl implements MainPresenter {
           view.showIdConfirmRecipientAmount(String.valueOf(recipientMoneyStr));
           break;
       }
+    }
+  }
+
+  @Override public void onViConfirmClick(ViConfirm viConfirm) {
+    if (!ViConfirm.isEmptyValue(viConfirm)) {
+      StringBuilder builder = new StringBuilder();
+      Country c = languages.getVi();
+      builder.append(c.getSendAmount()).append(":").append(viConfirm.getSendAmount()).append("\n");
+      builder.append(c.getReceiveAmount())
+          .append(":")
+          .append(viConfirm.getRecipientAmount())
+          .append("\n");
+      builder.append(c.getPickupBank())
+          .append(":")
+          .append(viConfirm.getPickupBankName())
+          .append("\n");
+      builder.append(c.getFirstName())
+          .append(" ")
+          .append(c.getLastName())
+          .append(":")
+          .append(viConfirm.getPayeeName())
+          .append("\n");
+      builder.append(c.getMobile()).append(":").append(viConfirm.getPayeePhone());
+      view.showConfirmDialog(builder.toString());
+    } else {
+      view.showEmptyMessage();
+    }
+  }
+
+  @Override public void onIdConfirmClick(IdConfirm idConfirm) {
+    if (!IdConfirm.isEmptyValue(idConfirm)) {
+      Country id = languages.getId();
+      StringBuilder builder = new StringBuilder();
+      builder.append(id.getSendAmount()).append(":").append(idConfirm.getSendAmount()).append("\n");
+      builder.append(id.getReceiveAmount())
+          .append(":")
+          .append(idConfirm.getRecipientAmount())
+          .append("\n");
+      builder.append(id.getPickupBank()).append(":").append(idConfirm.getBankName()).append("\n");
+      builder.append(id.getFirstName())
+          .append(" ")
+          .append(id.getLastName())
+          .append(":")
+          .append(idConfirm.getPayeeName())
+          .append("\n");
+      builder.append(id.getAcctNo())
+          .append(":")
+          .append(idConfirm.getPayeeAccountNumber())
+          .append("\n");
+      builder.append(id.getMobile()).append(":").append(idConfirm.getPayeePhone()).append("\n");
+      builder.append(id.getAddress()).append(":").append(idConfirm.getPayeeAddress());
+      view.showConfirmDialog(builder.toString());
+    } else {
+      view.showEmptyMessage();
     }
   }
 
