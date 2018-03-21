@@ -32,7 +32,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="WON"
+        android:text="KRW"
         />
   </LinearLayout>
   <TextView
@@ -65,5 +65,11 @@
         android:text="VND"
         />
   </LinearLayout>
-
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Recipient Information Tab"
+      />
+  <include layout="@layout/recipient_information_tab_vi"/>
+  <include layout="@layout/recipient_information_tab_id"/>
 </LinearLayout>
