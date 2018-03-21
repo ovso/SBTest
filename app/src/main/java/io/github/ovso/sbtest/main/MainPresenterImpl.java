@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.text.TextUtils;
 import hugo.weaving.DebugLog;
 import io.github.ovso.sbtest.R;
+import io.github.ovso.sbtest.main.model.Country;
 import io.github.ovso.sbtest.main.model.Languages;
 import io.github.ovso.sbtest.network.NetworkHelper;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -19,10 +20,11 @@ public class MainPresenterImpl implements MainPresenter {
   private MainPresenter.View view;
   private NetworkHelper network;
   private Languages languages;
-  private Country[] countries;
-  private Country currentCountry;
+  private CountryEnum[] countries;
+  private CountryEnum currentCountry;
 
-  public MainPresenterImpl(MainPresenter.View view, NetworkHelper network, Country[] countries) {
+  public MainPresenterImpl(MainPresenter.View view, NetworkHelper network,
+      CountryEnum[] countries) {
     this.view = view;
     this.network = network;
     this.countries = countries;
@@ -39,22 +41,24 @@ public class MainPresenterImpl implements MainPresenter {
           view.showViLayout();
           view.setListener();
 
-          // vi
-          view.showViPickupBankName(languages.getVi().getPickupBank());
-          view.showViConfirmAccountNumber(languages.getVi().getAcctNo());
-          view.showViPayeeName(
-              languages.getVi().getFirstName() + " " + languages.getVi().getLastName());
-
-          //id
-          view.showIdBankName(languages.getId().getBank());
-          view.showIdConfirmAccountNumber(languages.getId().getAcctNo());
-          view.showIdPayeeName(
-              languages.getId().getFirstName() + " " + languages.getId().getLastName());
-
+          showViLable(languages.getVi());
+          showIdLable(languages.getId());
         }, throwable -> {
           Timber.d(throwable);
           view.showMessage(R.string.error_server);
         });
+  }
+
+  private void showViLable(Country vi) {
+    view.showViPickupBankNameLable(vi.getPickupBank());
+    view.showViConfirmAccountNumberLable(vi.getAcctNo());
+    view.showViPayeeFirstNameLable(vi.getFirstName());
+  }
+
+  private void showIdLable(Country id) {
+    view.showIdBankNameLable(id.getBank());
+    view.showIdConfirmAccountNumberLable(id.getAcctNo());
+    view.showIdPayeeFirstNameLable(id.getFirstName());
   }
 
   @Override public void onCountryClick() {

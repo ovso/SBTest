@@ -133,27 +133,27 @@ public class MainActivity extends BaseActivity implements MainPresenter.View {
     idConfirmRecipientAmountTextView.setText(s);
   }
 
-  @Override public void showViPickupBankName(String pickupBank) {
+  @Override public void showViPickupBankNameLable(String pickupBank) {
     viConfirmPickupBankNameTextView.setText(pickupBank);
   }
 
-  @Override public void showIdBankName(String bank) {
+  @Override public void showIdBankNameLable(String bank) {
     idConfirmBankNameTextView.setText(bank);
   }
 
-  @Override public void showViConfirmAccountNumber(String acctNo) {
+  @Override public void showViConfirmAccountNumberLable(String acctNo) {
 
   }
 
-  @Override public void showIdConfirmAccountNumber(String acctNo) {
+  @Override public void showIdConfirmAccountNumberLable(String acctNo) {
     idConfirmPayeeAccountEditText.setText(acctNo);
   }
 
-  @Override public void showViPayeeName(String s) {
+  @Override public void showViPayeeFirstNameLable(String s) {
     viConfirmPayeeNameEditText.setText(s);
   }
 
-  @Override public void showIdPayeeName(String s) {
+  @Override public void showIdPayeeFirstNameLable(String s) {
     idConfirmPayeeNameEditText.setText(s);
   }
 

@@ -12,7 +12,7 @@ import io.github.ovso.sbtest.network.NetworkHelper;
 @Module public abstract class MainActivityModule {
   @Provides
   public static MainPresenter provideMainPresenter(MainActivity activity, NetworkHelper network,
-      Country[] countries) {
+      CountryEnum[] countries) {
     return new MainPresenterImpl(activity, network, countries);
   }
 
@@ -20,7 +20,7 @@ import io.github.ovso.sbtest.network.NetworkHelper;
     return new NetworkHelper(NetworkApi.BASE_URL);
   }
 
-  @Provides public static Country[] provideCountries() {
-    return new Country[] { Country.VI, Country.ID };
+  @Provides public static CountryEnum[] provideCountries() {
+    return new CountryEnum[] { CountryEnum.VI, CountryEnum.ID };
   }
 }
