@@ -78,6 +78,6 @@ public interface MainPresenter {
 
     void showEmptyMessage();
 
-    void showConfirmDialog(String text);
+    void showConfirmDialog(String title, String text);
   }
 }

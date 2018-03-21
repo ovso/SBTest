@@ -138,23 +138,23 @@ public class MainPresenterImpl implements MainPresenter {
     if (!ViConfirm.isEmptyValue(viConfirm)) {
       StringBuilder builder = new StringBuilder();
       Country c = languages.getVi();
-      builder.append(c.getSendAmount()).append(":").append(viConfirm.getSendAmount()).append("\n");
+      builder.append(c.getSendAmount()).append(":").append(viConfirm.getSendAmount()).append(" KRW").append("\n\n");
       builder.append(c.getReceiveAmount())
           .append(":")
-          .append(viConfirm.getRecipientAmount())
-          .append("\n");
+          .append(viConfirm.getRecipientAmount()).append(" ").append(CountryEnum.VI.getCurrency())
+          .append("\n\n");
       builder.append(c.getPickupBank())
           .append(":")
           .append(viConfirm.getPickupBankName())
-          .append("\n");
+          .append("\n\n");
       builder.append(c.getFirstName())
           .append(" ")
           .append(c.getLastName())
           .append(":")
           .append(viConfirm.getPayeeName())
-          .append("\n");
+          .append("\n\n");
       builder.append(c.getMobile()).append(":").append(viConfirm.getPayeePhone());
-      view.showConfirmDialog(builder.toString());
+      view.showConfirmDialog(CountryEnum.VI.getCountry(), builder.toString());
     } else {
       view.showEmptyMessage();
     }
@@ -164,25 +164,25 @@ public class MainPresenterImpl implements MainPresenter {
     if (!IdConfirm.isEmptyValue(idConfirm)) {
       Country id = languages.getId();
       StringBuilder builder = new StringBuilder();
-      builder.append(id.getSendAmount()).append(":").append(idConfirm.getSendAmount()).append("\n");
+      builder.append(id.getSendAmount()).append(":").append(idConfirm.getSendAmount()).append(" KRW").append("\n\n");
       builder.append(id.getReceiveAmount())
           .append(":")
-          .append(idConfirm.getRecipientAmount())
-          .append("\n");
-      builder.append(id.getPickupBank()).append(":").append(idConfirm.getBankName()).append("\n");
+          .append(idConfirm.getRecipientAmount()).append(" ").append(CountryEnum.ID.getCurrency())
+          .append("\n\n");
+      builder.append(id.getPickupBank()).append(":").append(idConfirm.getBankName()).append("\n\n");
       builder.append(id.getFirstName())
           .append(" ")
           .append(id.getLastName())
           .append(":")
           .append(idConfirm.getPayeeName())
-          .append("\n");
+          .append("\n\n");
       builder.append(id.getAcctNo())
           .append(":")
           .append(idConfirm.getPayeeAccountNumber())
-          .append("\n");
+          .append("\n\n");
       builder.append(id.getMobile()).append(":").append(idConfirm.getPayeePhone()).append("\n");
       builder.append(id.getAddress()).append(":").append(idConfirm.getPayeeAddress());
-      view.showConfirmDialog(builder.toString());
+      view.showConfirmDialog(CountryEnum.ID.getCountry(), builder.toString());
     } else {
       view.showEmptyMessage();
     }

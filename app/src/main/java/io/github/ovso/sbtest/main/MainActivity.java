@@ -256,10 +256,10 @@ public class MainActivity extends BaseActivity implements MainPresenter.View {
         .show();
   }
 
-  @Override public void showConfirmDialog(String text) {
-    new AlertDialog.Builder(this).setTitle("송금정보")
+  @Override public void showConfirmDialog(String title, String text) {
+    new AlertDialog.Builder(this).setTitle(title)
         .setMessage(text)
         .setPositiveButton(android.R.string.ok,
-            (dialogInterface, which) -> dialogInterface.dismiss());
+            (dialogInterface, which) -> dialogInterface.dismiss()).show();
   }
 }
