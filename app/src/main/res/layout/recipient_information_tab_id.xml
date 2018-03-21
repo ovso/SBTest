@@ -19,9 +19,14 @@
         />
     <TextView
         android:id="@+id/id_confirm_send_amount_textview"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="KRW"/>
   </LinearLayout>
   <LinearLayout
       android:layout_width="match_parent"
@@ -35,9 +40,14 @@
         />
     <TextView
         android:id="@+id/id_confirm_recipient_amount_textview"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="IDR"/>
   </LinearLayout>
   <LinearLayout
       android:layout_width="match_parent"

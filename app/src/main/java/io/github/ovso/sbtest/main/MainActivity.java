@@ -40,7 +40,7 @@ public class MainActivity extends BaseActivity implements MainPresenter.View {
   @BindView(R.id.id_confirm_recipient_amount_textview) TextView idConfirmRecipientAmountTextView;
   @BindView(R.id.id_confirm_bank_name_textview) TextView idConfirmBankNameTextView;
   @BindView(R.id.id_confirm_payee_name_edittext) TextView idConfirmPayeeNameEditText;
-  @BindView(R.id.id_confirm_payee_account_number_edittext) TextView idConfirmPayeeAccountEdittext;
+  @BindView(R.id.id_confirm_payee_account_number_edittext) EditText idConfirmPayeeAccountEditText;
   @BindView(R.id.id_confirm_payee_phone_edittext) TextView idConfirmPayeePhoneEditText;
   @BindView(R.id.id_confirm_payee_address_edittext) TextView idConfirmPayeeAddressEditText;
 
@@ -131,6 +131,30 @@ public class MainActivity extends BaseActivity implements MainPresenter.View {
 
   @Override public void showIdConfirmRecipientAmount(String s) {
     idConfirmRecipientAmountTextView.setText(s);
+  }
+
+  @Override public void showViPickupBankName(String pickupBank) {
+    viConfirmPickupBankNameTextView.setText(pickupBank);
+  }
+
+  @Override public void showIdBankName(String bank) {
+    idConfirmBankNameTextView.setText(bank);
+  }
+
+  @Override public void showViConfirmAccountNumber(String acctNo) {
+
+  }
+
+  @Override public void showIdConfirmAccountNumber(String acctNo) {
+    idConfirmPayeeAccountEditText.setText(acctNo);
+  }
+
+  @Override public void showViPayeeName(String s) {
+    viConfirmPayeeNameEditText.setText(s);
+  }
+
+  @Override public void showIdPayeeName(String s) {
+    idConfirmPayeeNameEditText.setText(s);
   }
 
   @OnClick(R.id.country_textview) void onCountryClick() {

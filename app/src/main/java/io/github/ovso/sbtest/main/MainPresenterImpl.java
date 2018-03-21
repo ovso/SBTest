@@ -38,6 +38,19 @@ public class MainPresenterImpl implements MainPresenter {
           currentCountry = countries[0];
           view.showViLayout();
           view.setListener();
+
+          // vi
+          view.showViPickupBankName(languages.getVi().getPickupBank());
+          view.showViConfirmAccountNumber(languages.getVi().getAcctNo());
+          view.showViPayeeName(
+              languages.getVi().getFirstName() + " " + languages.getVi().getLastName());
+
+          //id
+          view.showIdBankName(languages.getId().getBank());
+          view.showIdConfirmAccountNumber(languages.getId().getAcctNo());
+          view.showIdPayeeName(
+              languages.getId().getFirstName() + " " + languages.getId().getLastName());
+
         }, throwable -> {
           Timber.d(throwable);
           view.showMessage(R.string.error_server);

@@ -45,5 +45,17 @@ public interface MainPresenter {
     void showIdConfirmSendAmount(String sendMoneyStr);
 
     void showIdConfirmRecipientAmount(String s);
+
+    void showViPickupBankName(String pickupBank);
+
+    void showIdBankName(String bank);
+
+    void showViConfirmAccountNumber(String acctNo);
+
+    void showIdConfirmAccountNumber(String acctNo);
+
+    void showViPayeeName(String s);
+
+    void showIdPayeeName(String s);
   }
 }
