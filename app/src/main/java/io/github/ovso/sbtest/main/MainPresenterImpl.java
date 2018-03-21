@@ -55,7 +55,6 @@ public class MainPresenterImpl implements MainPresenter {
       currentCountry = countries[which];
       view.showCountry(currentCountry.getCountry());
       view.showCurrency(currentCountry.getCurrency());
-      view.requestRecipientFocus();
 
       switch (currentCountry) {
         case VI:
@@ -65,7 +64,7 @@ public class MainPresenterImpl implements MainPresenter {
           view.showIdLayout();
           break;
       }
-
+      view.requestRecipientFocus();
       dialogInterface.dismiss();
     });
   }
@@ -75,6 +74,17 @@ public class MainPresenterImpl implements MainPresenter {
       long sendMoney = getInputMoney(sendMoneyStr);
       long money = Math.round(sendMoney * currentCountry.getExchangeRate());
       view.showRecipientMoney(money);
+
+      switch (currentCountry) {
+        case VI:
+          view.showViConfirmSendAmount(sendMoneyStr);
+          view.showViConfirmRecipientAmount(String.valueOf(money));
+          break;
+        case ID:
+          view.showIdConfirmSendAmount(sendMoneyStr);
+          view.showIdConfirmRecipientAmount(String.valueOf(money));
+          break;
+      }
     }
   }
 
@@ -84,6 +94,17 @@ public class MainPresenterImpl implements MainPresenter {
       long recipientMoney = getInputMoney(recipientMoneyStr);
       long money = Math.round(recipientMoney / currentCountry.getExchangeRate());
       view.showSendMoney(money);
+
+      switch (currentCountry) {
+        case VI:
+          view.showViConfirmSendAmount(String.valueOf(money));
+          view.showViConfirmRecipientAmount(String.valueOf(recipientMoneyStr));
+          break;
+        case ID:
+          view.showIdConfirmSendAmount(String.valueOf(money));
+          view.showIdConfirmRecipientAmount(String.valueOf(recipientMoneyStr));
+          break;
+      }
     }
   }
 

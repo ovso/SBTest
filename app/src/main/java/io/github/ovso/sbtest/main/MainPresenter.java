@@ -37,5 +37,13 @@ public interface MainPresenter {
 
     void showViLayout();
     void showIdLayout();
+
+    void showViConfirmSendAmount(String sendMoneyStr);
+
+    void showViConfirmRecipientAmount(String money);
+
+    void showIdConfirmSendAmount(String sendMoneyStr);
+
+    void showIdConfirmRecipientAmount(String s);
   }
 }

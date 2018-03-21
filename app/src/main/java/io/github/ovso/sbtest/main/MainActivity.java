@@ -117,6 +117,22 @@ public class MainActivity extends BaseActivity implements MainPresenter.View {
     viConfirmContainer.setVisibility(View.GONE);
   }
 
+  @Override public void showViConfirmSendAmount(String sendMoneyStr) {
+    viConfirmSendAmountTextView.setText(sendMoneyStr);
+  }
+
+  @Override public void showViConfirmRecipientAmount(String money) {
+    viConfirmRecipientAmountTextView.setText(money);
+  }
+
+  @Override public void showIdConfirmSendAmount(String sendMoneyStr) {
+    idConfirmSendAmountTextView.setText(sendMoneyStr);
+  }
+
+  @Override public void showIdConfirmRecipientAmount(String s) {
+    idConfirmRecipientAmountTextView.setText(s);
+  }
+
   @OnClick(R.id.country_textview) void onCountryClick() {
     presenter.onCountryClick();
   }
