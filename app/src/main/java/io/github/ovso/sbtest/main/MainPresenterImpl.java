@@ -185,7 +185,7 @@ public class MainPresenterImpl implements MainPresenter {
           .append(":")
           .append(idConfirm.getPayeeAccountNumber())
           .append("\n\n");
-      builder.append(id.getMobile()).append(":").append(idConfirm.getPayeePhone()).append("\n");
+      builder.append(id.getMobile()).append(":").append(idConfirm.getPayeePhone()).append("\n\n");
       builder.append(id.getAddress()).append(":").append(idConfirm.getPayeeAddress());
       view.showConfirmDialog(CountryEnum.ID.getCountry(), builder.toString());
     } else {
