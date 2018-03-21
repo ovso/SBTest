@@ -53,8 +53,7 @@ public class MainPresenterImpl implements MainPresenter {
     view.showViConfirmSendAmountLable(vi.getSendAmount());
     view.showViConfirmRecipientAmountLable(vi.getReceiveAmount());
     view.showViConfirmPickupBankNameLable(vi.getPickupBank());
-    view.showViConfirmPayeeFirstNameLable(vi.getFirstName());
-    view.showViConfirmPayeeLastNameLable(vi.getLastName());
+    view.showViConfirmPayeeNameLabel(vi.getFirstName() + " " + vi.getLastName());
     view.showViConfirmPayeePhoneLable(vi.getMobile());
   }
 
@@ -62,8 +61,7 @@ public class MainPresenterImpl implements MainPresenter {
     view.showIdConfirmSendAmountLable(id.getSendAmount());
     view.showIdConfirmRecipientAmountLable(id.getReceiveAmount());
     view.showIdConfirmBankNameLable(id.getBank());
-    view.showIdConfirmPayeeFirstNameLable(id.getFirstName());
-    view.showIdConfirmPayeeLastnameLable(id.getLastName());
+    view.showIdConfirmPayeeNameLabel(id.getFirstName() + " " + id.getLastName());
     view.showIdConfirmAccountNumberLable(id.getAcctNo());
     view.showIdConfirmPayeePhoneLable(id.getMobile());
     view.showIdConfirmPayeeAddressLabel(id.getAddress());
@@ -89,6 +87,7 @@ public class MainPresenterImpl implements MainPresenter {
           view.showIdLayout();
           break;
       }
+      //view.requestRecipientFocus();
       view.requestRecipientFocus();
       dialogInterface.dismiss();
     });

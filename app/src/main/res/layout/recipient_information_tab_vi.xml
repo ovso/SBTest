@@ -14,7 +14,7 @@
       android:orientation="horizontal"
       >
     <TextView
-        android:id="@+id/vi_confirm_send_amount_lable_textview"
+        android:id="@+id/vi_confirm_send_amount_label_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text = "보내는 금액"
@@ -24,6 +24,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:gravity="center"
         />
     <TextView
         android:layout_width="wrap_content"
@@ -36,7 +37,7 @@
       android:orientation="horizontal"
       >
     <TextView
-        android:id="@+id/vi_confirm_recipient_amount_lable_textview"
+        android:id="@+id/vi_confirm_recipient_amount_label_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="받는 금액"
@@ -46,6 +47,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:gravity="center"
         />
     <TextView
         android:layout_width="wrap_content"
@@ -59,7 +61,7 @@
       android:orientation="horizontal"
       >
     <TextView
-        android:id="@+id/vi_confirm_pickup_bank_name_lable_textview"
+        android:id="@+id/vi_confirm_pickup_bank_name_label_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text = "픽업 은행 이름"
@@ -76,13 +78,13 @@
       android:orientation="horizontal"
       >
     <TextView
-        android:id="@+id/vi_confirm_payee_firstname_lable_textview"
+        android:id="@+id/vi_confirm_payee_name_label_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="first name"
         />
     <EditText
-        android:id="@+id/vi_confirm_payee_firstname_edittext"
+        android:id="@+id/vi_confirm_payee_name_edittext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />
@@ -93,24 +95,7 @@
       android:orientation="horizontal"
       >
     <TextView
-        android:id="@+id/vi_confirm_payee_lastname_lable_textview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="last name"
-        />
-    <EditText
-        android:id="@+id/vi_confirm_payee_lastname_edittext"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
-  </LinearLayout>
-  <LinearLayout
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:orientation="horizontal"
-      >
-    <TextView
-        android:id="@+id/vi_confirm_payee_phone_lable_textview"
+        android:id="@+id/vi_confirm_payee_phone_label_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="수취인 휴대폰"
