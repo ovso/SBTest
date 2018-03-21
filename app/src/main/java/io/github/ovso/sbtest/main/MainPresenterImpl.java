@@ -1,5 +1,6 @@
 package io.github.ovso.sbtest.main;
 
+import android.content.DialogInterface;
 import android.text.TextUtils;
 import hugo.weaving.DebugLog;
 import io.github.ovso.sbtest.R;
@@ -35,6 +36,7 @@ public class MainPresenterImpl implements MainPresenter {
         .subscribe(languages -> {
           this.languages = languages;
           currentCountry = countries[0];
+          view.showViLayout();
           view.setListener();
         }, throwable -> {
           Timber.d(throwable);
@@ -49,11 +51,21 @@ public class MainPresenterImpl implements MainPresenter {
     final String[] currencies =
         new String[] { countries[0].getCurrency(), countries[1].getCurrency() };
 
-    view.showCurrencyDialog(currencies, (dialogInterface, which) -> {
+    view.showCurrencyDialog(currencies, (DialogInterface dialogInterface, int which) -> {
       currentCountry = countries[which];
       view.showCountry(currentCountry.getCountry());
       view.showCurrency(currentCountry.getCurrency());
       view.requestRecipientFocus();
+
+      switch (currentCountry) {
+        case VI:
+          view.showViLayout();
+          break;
+        case ID:
+          view.showIdLayout();
+          break;
+      }
+
       dialogInterface.dismiss();
     });
   }

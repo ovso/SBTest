@@ -72,4 +72,11 @@
       />
   <include layout="@layout/recipient_information_tab_vi"/>
   <include layout="@layout/recipient_information_tab_id"/>
+
+
+  <Button
+      android:id="@+id/confirm_button"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="확인"/>
 </LinearLayout>

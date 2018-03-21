@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:id="@+id/vi_confirm_container"
-    android:visibility="visible"
+    android:visibility="gone"
     >
   <LinearLayout
       android:layout_width="match_parent"
@@ -50,7 +50,7 @@
         android:text="픽업 은행 이름"
         />
     <TextView
-        android:id="@+id/vi_confirm_bank_name_textview"
+        android:id="@+id/vi_confirm_pickup_bank_name_textview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />

@@ -34,5 +34,8 @@ public interface MainPresenter {
     void showSendMoney(long send);
 
     void requestRecipientFocus();
+
+    void showViLayout();
+    void showIdLayout();
   }
 }
