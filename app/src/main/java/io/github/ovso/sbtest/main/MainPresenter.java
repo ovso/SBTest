@@ -79,5 +79,13 @@ public interface MainPresenter {
     void showEmptyMessage();
 
     void showConfirmDialog(String title, String text);
+
+    void hideLoading();
+
+    void showLoading();
+
+    void hideRootView();
+
+    void showRootView();
   }
 }

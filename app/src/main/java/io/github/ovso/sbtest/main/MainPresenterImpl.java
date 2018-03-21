@@ -33,6 +33,8 @@ public class MainPresenterImpl implements MainPresenter {
   }
 
   @Override public void onCreate() {
+    view.showLoading();
+    view.hideRootView();
     network.getNetworkApi()
         .getLanguages()
         .subscribeOn(Schedulers.io())
@@ -43,11 +45,14 @@ public class MainPresenterImpl implements MainPresenter {
           view.showViLayout();
           view.setListener();
 
+          view.showRootView();
           showViLable(languages.getVi());
           showIdLable(languages.getId());
+          view.hideLoading();
         }, throwable -> {
           Timber.d(throwable);
           view.showMessage(R.string.error_server);
+          view.hideLoading();
         });
   }
 

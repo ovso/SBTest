@@ -8,6 +8,7 @@ import android.text.Editable;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -23,6 +24,8 @@ import timber.log.Timber;
 public class MainActivity extends BaseActivity implements MainPresenter.View {
   //공통
   @Inject MainPresenter presenter;
+  @BindView(R.id.rootview) ViewGroup rootview;
+  @BindView(R.id.progressbar) ProgressBar progressBar;
   @BindView(R.id.country_textview) TextView countryTextView;
   @BindView(R.id.currency_button) TextView currencyButton;
   @BindView(R.id.send_amount_edittext) EditText sendEditText;
@@ -261,5 +264,21 @@ public class MainActivity extends BaseActivity implements MainPresenter.View {
         .setMessage(text)
         .setPositiveButton(android.R.string.ok,
             (dialogInterface, which) -> dialogInterface.dismiss()).show();
+  }
+
+  @Override public void hideLoading() {
+    progressBar.setVisibility(View.GONE);
+  }
+
+  @Override public void showLoading() {
+    progressBar.setVisibility(View.VISIBLE);
+  }
+
+  @Override public void hideRootView() {
+    rootview.setVisibility(View.GONE);
+  }
+
+  @Override public void showRootView() {
+    rootview.setVisibility(View.VISIBLE);
   }
 }

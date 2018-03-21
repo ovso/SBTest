@@ -1,86 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="io.github.ovso.sbtest.main.MainActivity"
-    >
-  <TextView
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="송금액"
-      />
+    android:layout_height="match_parent">
+
   <LinearLayout
+      android:id="@+id/rootview"
       android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:orientation="horizontal"
+      android:layout_height="match_parent"
+      android:orientation="vertical"
+      android:visibility="gone"
+      tools:context="io.github.ovso.sbtest.main.MainActivity"
       >
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="한국"
+        android:text="송금액"
         />
-    <EditText
-        android:id="@+id/send_amount_edittext"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:inputType="number"
-        />
+        android:orientation="horizontal"
+        >
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="한국"
+          />
+      <EditText
+          android:id="@+id/send_amount_edittext"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:inputType="number"
+          />
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="KRW"
+          />
+    </LinearLayout>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="KRW"
+        android:text="수취금액"
         />
-  </LinearLayout>
-  <TextView
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="수취금액"
-      />
-  <LinearLayout
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:orientation="horizontal"
-      >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+      <TextView
+          android:id="@+id/country_textview"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="베트남"
+          />
+      <EditText
+          android:id="@+id/recipient_amount_edittext"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="1"
+          android:inputType="number"
+          />
+      <Button
+          android:id="@+id/currency_button"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="VND"
+          />
+    </LinearLayout>
     <TextView
-        android:id="@+id/country_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="베트남"
+        android:text="Recipient Information Tab"
         />
-    <EditText
-        android:id="@+id/recipient_amount_edittext"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:inputType="number"
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorAccent"
         />
+    <include layout="@layout/recipient_information_tab_vi"/>
+    <include layout="@layout/recipient_information_tab_id"/>
+
+
     <Button
-        android:id="@+id/currency_button"
-        android:layout_width="wrap_content"
+        android:id="@+id/confirm_button"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="VND"
+        android:text="확인"
         />
   </LinearLayout>
-  <TextView
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="Recipient Information Tab"
-      />
-  <View
-      android:layout_width="match_parent"
-      android:layout_height="1dp"
-      android:background="@color/colorAccent"/>
-  <include layout="@layout/recipient_information_tab_vi"/>
-  <include layout="@layout/recipient_information_tab_id"/>
-
-
-  <Button
-      android:id="@+id/confirm_button"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:text="확인"/>
-</LinearLayout>
+  <ProgressBar
+      android:id="@+id/progressbar"
+      android:layout_width="34dp"
+      android:layout_height="34dp"
+      android:visibility="gone"
+      android:layout_gravity="center"/>
+</FrameLayout>
